@@ -8,18 +8,18 @@ int main( )
    short int a = -6730;
    float b = 68.123; 
    char c = 'J';
-	ofstream abc{"abc.txt"};
+	ofstream abc{"abc.bin"};
 	
 	if(abc)
 	{
-	  abc << a << endl;
-	  abc << b << endl;
-	  abc << c << endl;
+	  abc.write(reinterpret_cast <char*>(&a),sizeof(a));
+	  abc.write(reinterpret_cast <char*>(&b),sizeof(b));
+	  abc.write(reinterpret_cast <char*>(&c),sizeof(c));
 	}
 	else 
 	{
  
-  	 cout << "could not read";
+  	 cout << "Error writing to file";
 	}
 	cout<<a<<" "<<b<<" "<<c;//display data to console (i.e. as formatted chars)
 
